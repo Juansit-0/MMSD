@@ -1,0 +1,105 @@
+@startuml componentes
+title Diagrama de Componentes — Sockets y Lollipops
+
+skinparam componentStyle uml2
+skinparam component {
+  BackgroundColor #E8F4FD
+  BorderColor #2C5F8D
+}
+skinparam interface {
+  BackgroundColor #FFF2CC
+  BorderColor #B8860B
+}
+skinparam database {
+  BackgroundColor #DAE8FC
+  BorderColor #6C8EBF
+}
+
+actor "Cliente Web/Móvil" as CLI
+
+component "API REST\n(Spring MVC + Controllers)" as API
+component "Seguridad\n(Spring Security + JWT Filter + BCrypt)" as SEC
+component "Servicios de Negocio\n(Auth, Pedido, Factura, Reporte, Usuario)" as SVC
+component "Persistencia\n(Spring Data MongoDB)" as PERS
+component "Swagger UI\n(springdoc-openapi)" as SWG
+database "MongoDB 7" as DB
+
+' ============ INTERFACES (lollipops provistas) ============
+interface "OpenAPISpec" as IOAS
+interface "JwtTokenValidation" as IJWT
+interface "IAuthService" as IAUTH
+interface "IPedidoService" as IPED
+interface "IFacturaService" as IFAC
+interface "IReporteService" as IREP
+interface "IUsuarioService" as IUSV
+interface "IMesaService" as IMSV
+interface "IProductoService" as IPRSV
+interface "ICategoriaService" as ICSV
+interface "IUsuarioRepository" as IUREP
+interface "IMesaRepository" as IMREP
+interface "IProductoRepository" as IPRREP
+interface "ICategoriaRepository" as ICAREP
+interface "IPedidoRepository" as IPREP
+interface "IFacturaRepository" as IFREP
+interface "IContadorRepository" as ICREP
+interface "MongoDriver" as IMONGO
+
+' ============ LOLLIPOPS (componente PROVEE interfaz) ============
+API -- IOAS
+SEC -- IJWT
+SVC -- IAUTH
+SVC -- IPED
+SVC -- IFAC
+SVC -- IREP
+SVC -- IUSV
+SVC -- IMSV
+SVC -- IPRSV
+SVC -- ICSV
+PERS -- IUREP
+PERS -- IMREP
+PERS -- IPRREP
+PERS -- ICAREP
+PERS -- IPREP
+PERS -- IFREP
+PERS -- ICREP
+DB -- IMONGO
+
+' ============ SOCKETS (componente REQUIERE interfaz) ============
+CLI )..( IOAS : consume
+SWG )..( IOAS : describe
+API )..( IJWT : valida JWT
+API )..( IAUTH : delega login
+API )..( IPED : delega pedidos
+API )..( IFAC : delega facturación
+API )..( IREP : delega reportes
+API )..( IUSV : delega usuarios
+API )..( IMSV : delega mesas
+API )..( IPRSV : delega productos
+API )..( ICSV : delega categorías
+SVC )..( IUREP : lee/escribe
+SVC )..( IMREP : lee/escribe
+SVC )..( IPRREP : lee/escribe
+SVC )..( ICAREP : lee/escribe
+SVC )..( IPREP : lee/escribe
+SVC )..( IFREP : lee/escribe
+SVC )..( ICREP : siguiente factura
+PERS )..( IMONGO : driver oficial
+
+note top of CLI
+  Smartphone Android (mesero)
+  Tablet / PC caja (administrador)
+end note
+
+note right of SEC
+  - JwtAuthenticationFilter
+  - JwtService (firma/valida HS256)
+  - BCryptPasswordEncoder (cost 10)
+  - @PreAuthorize granular por rol
+end note
+
+note right of SVC
+  Implementaciones: AuthServiceImpl,
+  PedidoServiceImpl, FacturaServiceImpl,
+  ReporteServiceImpl, UsuarioServiceImpl
+end note
+@enduml

@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?><XMI xmlns:UML="href://org.omg/UML/1.3" xmi.version="1.1">
+    <XMI.header>
+        <XMI.metamodel xmi.name="UML" xmi.version="1.3"/>
+    </XMI.header>
+    <XMI.content>
+        <UML:Model name="PlantUML" xmi.id="model1">
+            <UML:Namespace.ownedElement>
+                <UML:Component name="Cliente Web/Móvil" namespace="model1" xmi.id="ent0001">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="API REST" namespace="model1" xmi.id="ent0002">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="Seguridad" namespace="model1" xmi.id="ent0003">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="Servicios de Negocio" namespace="model1" xmi.id="ent0004">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="Persistencia" namespace="model1" xmi.id="ent0005">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="Swagger UI" namespace="model1" xmi.id="ent0006">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="MongoDB 7" namespace="model1" xmi.id="ent0007">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="OpenAPISpec" namespace="model1" xmi.id="ent0008">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="JwtTokenValidation" namespace="model1" xmi.id="ent0009">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="IAuthService" namespace="model1" xmi.id="ent0010">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="IPedidoService" namespace="model1" xmi.id="ent0011">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="IFacturaService" namespace="model1" xmi.id="ent0012">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="IReporteService" namespace="model1" xmi.id="ent0013">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="IUsuarioService" namespace="model1" xmi.id="ent0014">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="IMesaService" namespace="model1" xmi.id="ent0015">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="IProductoService" namespace="model1" xmi.id="ent0016">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="ICategoriaService" namespace="model1" xmi.id="ent0017">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="IUsuarioRepository" namespace="model1" xmi.id="ent0018">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="IMesaRepository" namespace="model1" xmi.id="ent0019">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="IProductoRepository" namespace="model1" xmi.id="ent0020">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="ICategoriaRepository" namespace="model1" xmi.id="ent0021">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="IPedidoRepository" namespace="model1" xmi.id="ent0022">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="IFacturaRepository" namespace="model1" xmi.id="ent0023">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="IContadorRepository" namespace="model1" xmi.id="ent0024">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="MongoDriver" namespace="model1" xmi.id="ent0025">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="Smartphone Android (mesero)" namespace="model1" xmi.id="ent0064">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="- JwtAuthenticationFilter" namespace="model1" xmi.id="ent0067">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="Implementaciones: AuthServiceImpl," namespace="model1" xmi.id="ent0070">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Association namespace="model1" xmi.id="ass72">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass72" type="ent0002" xmi.id="end73">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass72" type="ent0008" xmi.id="end74">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass75">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass75" type="ent0003" xmi.id="end76">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass75" type="ent0009" xmi.id="end77">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass78">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass78" type="ent0004" xmi.id="end79">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass78" type="ent0010" xmi.id="end80">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass81">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass81" type="ent0004" xmi.id="end82">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass81" type="ent0011" xmi.id="end83">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass84">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass84" type="ent0004" xmi.id="end85">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass84" type="ent0012" xmi.id="end86">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass87">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass87" type="ent0004" xmi.id="end88">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass87" type="ent0013" xmi.id="end89">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass90">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass90" type="ent0004" xmi.id="end91">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass90" type="ent0014" xmi.id="end92">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass93">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass93" type="ent0004" xmi.id="end94">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass93" type="ent0015" xmi.id="end95">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass96">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass96" type="ent0004" xmi.id="end97">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass96" type="ent0016" xmi.id="end98">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass99">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass99" type="ent0004" xmi.id="end100">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass99" type="ent0017" xmi.id="end101">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass102">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass102" type="ent0005" xmi.id="end103">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass102" type="ent0018" xmi.id="end104">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass105">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass105" type="ent0005" xmi.id="end106">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass105" type="ent0019" xmi.id="end107">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass108">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass108" type="ent0005" xmi.id="end109">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass108" type="ent0020" xmi.id="end110">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass111">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass111" type="ent0005" xmi.id="end112">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass111" type="ent0021" xmi.id="end113">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass114">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass114" type="ent0005" xmi.id="end115">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass114" type="ent0022" xmi.id="end116">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass117">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass117" type="ent0005" xmi.id="end118">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass117" type="ent0023" xmi.id="end119">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass120">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass120" type="ent0005" xmi.id="end121">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass120" type="ent0024" xmi.id="end122">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass123">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass123" type="ent0007" xmi.id="end124">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass123" type="ent0025" xmi.id="end125">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="consume" namespace="model1" xmi.id="ass126">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass126" type="ent0001" xmi.id="end127">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass126" type="ent0008" xmi.id="end128">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="describe" namespace="model1" xmi.id="ass129">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass129" type="ent0006" xmi.id="end130">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass129" type="ent0008" xmi.id="end131">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="valida JWT" namespace="model1" xmi.id="ass132">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass132" type="ent0002" xmi.id="end133">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass132" type="ent0009" xmi.id="end134">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="delega login" namespace="model1" xmi.id="ass135">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass135" type="ent0002" xmi.id="end136">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass135" type="ent0010" xmi.id="end137">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="delega pedidos" namespace="model1" xmi.id="ass138">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass138" type="ent0002" xmi.id="end139">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass138" type="ent0011" xmi.id="end140">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="delega facturación" namespace="model1" xmi.id="ass141">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass141" type="ent0002" xmi.id="end142">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass141" type="ent0012" xmi.id="end143">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="delega reportes" namespace="model1" xmi.id="ass144">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass144" type="ent0002" xmi.id="end145">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass144" type="ent0013" xmi.id="end146">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="delega usuarios" namespace="model1" xmi.id="ass147">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass147" type="ent0002" xmi.id="end148">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass147" type="ent0014" xmi.id="end149">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="delega mesas" namespace="model1" xmi.id="ass150">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass150" type="ent0002" xmi.id="end151">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass150" type="ent0015" xmi.id="end152">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="delega productos" namespace="model1" xmi.id="ass153">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass153" type="ent0002" xmi.id="end154">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass153" type="ent0016" xmi.id="end155">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="delega categorías" namespace="model1" xmi.id="ass156">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass156" type="ent0002" xmi.id="end157">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass156" type="ent0017" xmi.id="end158">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="lee/escribe" namespace="model1" xmi.id="ass159">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass159" type="ent0004" xmi.id="end160">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass159" type="ent0018" xmi.id="end161">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="lee/escribe" namespace="model1" xmi.id="ass162">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass162" type="ent0004" xmi.id="end163">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass162" type="ent0019" xmi.id="end164">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="lee/escribe" namespace="model1" xmi.id="ass165">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass165" type="ent0004" xmi.id="end166">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass165" type="ent0020" xmi.id="end167">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="lee/escribe" namespace="model1" xmi.id="ass168">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass168" type="ent0004" xmi.id="end169">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass168" type="ent0021" xmi.id="end170">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="lee/escribe" namespace="model1" xmi.id="ass171">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass171" type="ent0004" xmi.id="end172">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass171" type="ent0022" xmi.id="end173">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="lee/escribe" namespace="model1" xmi.id="ass174">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass174" type="ent0004" xmi.id="end175">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass174" type="ent0023" xmi.id="end176">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="siguiente factura" namespace="model1" xmi.id="ass177">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass177" type="ent0004" xmi.id="end178">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass177" type="ent0024" xmi.id="end179">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="driver oficial" namespace="model1" xmi.id="ass180">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass180" type="ent0005" xmi.id="end181">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass180" type="ent0025" xmi.id="end182">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass183">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass183" type="ent0064" xmi.id="end184">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass183" type="ent0001" xmi.id="end185">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass186">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass186" type="ent0003" xmi.id="end187">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass186" type="ent0067" xmi.id="end188">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass189">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass189" type="ent0004" xmi.id="end190">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass189" type="ent0070" xmi.id="end191">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+            </UML:Namespace.ownedElement>
+        </UML:Model>
+    </XMI.content>
+</XMI>

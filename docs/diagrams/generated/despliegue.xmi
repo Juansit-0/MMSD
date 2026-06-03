@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?><XMI xmlns:UML="href://org.omg/UML/1.3" xmi.version="1.1">
+    <XMI.header>
+        <XMI.metamodel xmi.name="UML" xmi.version="1.3"/>
+    </XMI.header>
+    <XMI.content>
+        <UML:Model name="PlantUML" xmi.id="model1">
+            <UML:Namespace.ownedElement>
+                <UML:Component name="Smartphone Android" namespace="model1" xmi.id="ent0001">
+                    <UML:Classifier.feature/>
+                    <UML:Component name="Navegador Chrome" namespace="model1" xmi.id="ent0002">
+                        <UML:Classifier.feature/>
+                    </UML:Component>
+                    <UML:Component name="JWT en localStorage" namespace="model1" xmi.id="ent0003">
+                        <UML:Classifier.feature/>
+                    </UML:Component>
+                </UML:Component>
+                <UML:Component name="Tablet / PC Caja" namespace="model1" xmi.id="ent0004">
+                    <UML:Classifier.feature/>
+                    <UML:Component name="Navegador Chrome" namespace="model1" xmi.id="ent0005">
+                        <UML:Classifier.feature/>
+                    </UML:Component>
+                    <UML:Component name="JWT en localStorage" namespace="model1" xmi.id="ent0006">
+                        <UML:Classifier.feature/>
+                    </UML:Component>
+                    <UML:Component name="Swagger UI" namespace="model1" xmi.id="ent0007">
+                        <UML:Classifier.feature/>
+                    </UML:Component>
+                </UML:Component>
+                <UML:Component name="Host Local del Restaurante" namespace="model1" xmi.id="ent0008">
+                    <UML:Classifier.feature/>
+                    <UML:Component name="Contenedor app" namespace="model1" xmi.id="ent0009">
+                        <UML:Classifier.feature/>
+                        <UML:Component name="montania-margarita-app.jar" namespace="model1" xmi.id="ent0010">
+                            <UML:Classifier.feature/>
+                        </UML:Component>
+                        <UML:Component name="OpenAPI Spec" namespace="model1" xmi.id="ent0011">
+                            <UML:Classifier.feature/>
+                        </UML:Component>
+                        <UML:Component name="Swagger UI" namespace="model1" xmi.id="ent0012">
+                            <UML:Classifier.feature/>
+                        </UML:Component>
+                        <UML:Component name="JWT Filter" namespace="model1" xmi.id="ent0013">
+                            <UML:Classifier.feature/>
+                        </UML:Component>
+                        <UML:Component name="Logback Config" namespace="model1" xmi.id="ent0014">
+                            <UML:Classifier.feature/>
+                        </UML:Component>
+                    </UML:Component>
+                    <UML:Component name="Contenedor mongo" namespace="model1" xmi.id="ent0015">
+                        <UML:Classifier.feature/>
+                        <UML:Component name="mongod 7.x" namespace="model1" xmi.id="ent0016">
+                            <UML:Classifier.feature/>
+                        </UML:Component>
+                        <UML:Component name="Volumen ./data" namespace="model1" xmi.id="ent0017">
+                            <UML:Classifier.feature/>
+                        </UML:Component>
+                    </UML:Component>
+                    <UML:Component name="Volumen Host" namespace="model1" xmi.id="ent0018">
+                        <UML:Classifier.feature/>
+                        <UML:Component name="./data/" namespace="model1" xmi.id="ent0019">
+                            <UML:Classifier.feature/>
+                        </UML:Component>
+                        <UML:Component name="./backups/" namespace="model1" xmi.id="ent0020">
+                            <UML:Classifier.feature/>
+                        </UML:Component>
+                        <UML:Component name=".env (secrets)" namespace="model1" xmi.id="ent0021">
+                            <UML:Classifier.feature/>
+                        </UML:Component>
+                    </UML:Component>
+                </UML:Component>
+                <UML:Component name="Red Docker interna: montania-network" namespace="model1" xmi.id="ent0032">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="Imagen base: eclipse-temurin:17-jre-jammy" namespace="model1" xmi.id="ent0035">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="Imagen: mongo:7" namespace="model1" xmi.id="ent0038">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Association name="HTTP/JSON" namespace="model1" xmi.id="ass40">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass40" type="ent0002" xmi.id="end41">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass40" type="ent0010" xmi.id="end42">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="HTTP/JSON" namespace="model1" xmi.id="ass43">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass43" type="ent0005" xmi.id="end44">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass43" type="ent0010" xmi.id="end45">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="HTTP" namespace="model1" xmi.id="ass46">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass46" type="ent0007" xmi.id="end47">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass46" type="ent0012" xmi.id="end48">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="describe" namespace="model1" xmi.id="ass49">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass49" type="ent0012" xmi.id="end50">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass49" type="ent0011" xmi.id="end51">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="mongodb //mongo 27017" namespace="model1" xmi.id="ass52">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass52" type="ent0010" xmi.id="end53">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass52" type="ent0016" xmi.id="end54">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="persiste documentos" namespace="model1" xmi.id="ass55">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass55" type="ent0016" xmi.id="end56">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass55" type="ent0017" xmi.id="end57">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="bind mount" namespace="model1" xmi.id="ass58">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass58" type="ent0017" xmi.id="end59">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass58" type="ent0019" xmi.id="end60">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="mongodump" namespace="model1" xmi.id="ass61">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass61" type="ent0016" xmi.id="end62">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass61" type="ent0020" xmi.id="end63">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="lee JWT_SECRET," namespace="model1" xmi.id="ass64">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass64" type="ent0010" xmi.id="end65">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass64" type="ent0021" xmi.id="end66">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass67">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass67" type="ent0008" xmi.id="end68">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass67" type="ent0032" xmi.id="end69">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass70">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass70" type="ent0009" xmi.id="end71">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass70" type="ent0035" xmi.id="end72">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass73">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass73" type="ent0015" xmi.id="end74">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass73" type="ent0038" xmi.id="end75">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+            </UML:Namespace.ownedElement>
+        </UML:Model>
+    </XMI.content>
+</XMI>

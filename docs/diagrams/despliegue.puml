@@ -1,0 +1,84 @@
+@startuml despliegue
+title Diagrama de Despliegue — Artifacts sobre Nodos
+
+skinparam node {
+  BackgroundColor #E8F4FD
+  BorderColor #2C5F8D
+}
+skinparam artifact {
+  BackgroundColor #FFF2CC
+  BorderColor #B8860B
+}
+skinparam database {
+  BackgroundColor #DAE8FC
+  BorderColor #6C8EBF
+}
+
+' ============== DISPOSITIVOS CLIENTE ==============
+
+node "Smartphone Android\n(Mesero)" as MOV {
+  artifact "Navegador Chrome" as ChromeM
+  artifact "JWT en localStorage" as TokenM
+}
+
+node "Tablet / PC Caja\n(Administrador)" as CAJA {
+  artifact "Navegador Chrome" as ChromeA
+  artifact "JWT en localStorage" as TokenA
+  artifact "Swagger UI\n(cliente de respaldo)" as SwgClient
+}
+
+' ============== HOST DE DESPLIEGUE ==============
+
+node "Host Local del Restaurante\n(Docker Engine 24+)" as HOST {
+
+  node "Contenedor app" as CTAPP {
+    artifact "montania-margarita-app.jar" as JAR
+    artifact "OpenAPI Spec\n(/v3/api-docs)" as OAS
+    artifact "Swagger UI\n(/swagger-ui.html)" as SwgArt
+    artifact "JWT Filter" as JwtArt
+    artifact "Logback Config\n(application.yml)" as LogArt
+  }
+
+  node "Contenedor mongo" as CTMONGO {
+    artifact "mongod 7.x" as MongoD
+    database "Volumen ./data\n(Journaling activo)" as DataVol
+  }
+
+  node "Volumen Host" as VOL {
+    artifact "./data/" as DataDir
+    artifact "./backups/" as BackupDir
+    artifact ".env (secrets)" as EnvFile
+  }
+}
+
+' ============== CONEXIONES ==============
+
+ChromeM --> JAR : HTTP/JSON\n(LAN, puerto 8080)
+ChromeA --> JAR : HTTP/JSON\n(LAN, puerto 8080)
+SwgClient --> SwgArt : HTTP\n(/swagger-ui.html)
+SwgArt --> OAS : describe
+
+JAR --> MongoD : mongodb://mongo:27017\n(red interna Docker)
+MongoD --> DataVol : persiste documentos
+DataVol --> DataDir : bind mount\n(./data:/data/db)
+MongoD ..> BackupDir : mongodump\n(cron opcional)
+JAR ..> EnvFile : lee JWT_SECRET,\nMONGO_PASSWORD
+
+note right of HOST
+  Red Docker interna: montania-network
+  Política: restart: unless-stopped
+  Healthchecks activos en ambos contenedores
+end note
+
+note right of CTAPP
+  Imagen base: eclipse-temurin:17-jre-jammy
+  Memoria: 512 MB - 1 GB
+  Puerto expuesto: 8080
+end note
+
+note right of CTMONGO
+  Imagen: mongo:7
+  Memoria: 512 MB - 1 GB
+  Sin exposición de puerto al host
+end note
+@enduml

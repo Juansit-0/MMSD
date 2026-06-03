@@ -1,0 +1,37 @@
+@startuml contexto
+title Diagrama de Contexto — Sistema Montaña Margarita
+
+skinparam linetype polyline
+skinparam shadowing false
+skinparam circle {
+  BackgroundColor #FFF2CC
+  BorderColor #B8860B
+  FontSize 14
+  FontStyle bold
+}
+skinparam rectangle {
+  BackgroundColor #E8F4FD
+  BorderColor #2C5F8D
+  FontSize 12
+}
+
+' ============ NODO CENTRAL ============
+circle "Sistema\nMontaña Margarita" as SYS
+
+' ============ ACTORES DIRECTOS ============
+rectangle "Mesero" as M
+rectangle "Administrador\n(Propietario / Esposa)" as A
+
+' ============ INTERACCIONES ACTOR ↔ SISTEMA ============
+M -right-> SYS : Captura, modifica\ny cierra pedidos
+SYS -right-> M : Estado de mesas,\nconfirmación de pedidos
+
+A -left-> SYS : Factura, cancela pedidos,\ngestiona usuarios y productos
+SYS -left-> A : Reportes de ventas,\nhistorial, facturas, exportaciones CSV
+
+note bottom of SYS
+  Backend REST (Java 17 + Spring Boot 3)
+  con persistencia interna en MongoDB.
+  Opera localmente sobre LAN del restaurante.
+end note
+@enduml

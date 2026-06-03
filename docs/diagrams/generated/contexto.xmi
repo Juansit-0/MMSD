@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><XMI xmlns:UML="href://org.omg/UML/1.3" xmi.version="1.1">
+    <XMI.header>
+        <XMI.metamodel xmi.name="UML" xmi.version="1.3"/>
+    </XMI.header>
+    <XMI.content>
+        <UML:Model name="PlantUML" xmi.id="model1">
+            <UML:Namespace.ownedElement>
+                <UML:Component name="Sistema" namespace="model1" xmi.id="ent0001">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="Mesero" namespace="model1" xmi.id="ent0002">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="Administrador" namespace="model1" xmi.id="ent0003">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Component name="Backend REST (Java 17 + Spring Boot 3)" namespace="model1" xmi.id="ent0011">
+                    <UML:Classifier.feature/>
+                </UML:Component>
+                <UML:Association name="Captura, modifica" namespace="model1" xmi.id="ass13">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass13" type="ent0002" xmi.id="end14">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass13" type="ent0001" xmi.id="end15">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="Estado de mesas," namespace="model1" xmi.id="ass16">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass16" type="ent0001" xmi.id="end17">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass16" type="ent0002" xmi.id="end18">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="Factura, cancela pedidos," namespace="model1" xmi.id="ass19">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass19" type="ent0001" xmi.id="end20">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass19" type="ent0003" xmi.id="end21">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association name="Reportes de ventas," namespace="model1" xmi.id="ass22">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass22" type="ent0003" xmi.id="end23">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass22" type="ent0001" xmi.id="end24">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+                <UML:Association namespace="model1" xmi.id="ass25">
+                    <UML:Association.connection>
+                        <UML:AssociationEnd association="ass25" type="ent0001" xmi.id="end26">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                        <UML:AssociationEnd association="ass25" type="ent0011" xmi.id="end27">
+                            <UML:AssociationEnd.participant/>
+                        </UML:AssociationEnd>
+                    </UML:Association.connection>
+                </UML:Association>
+            </UML:Namespace.ownedElement>
+        </UML:Model>
+    </XMI.content>
+</XMI>

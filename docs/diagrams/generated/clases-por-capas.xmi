@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1"
+         xmlns:xmi="http://schema.omg.org/spec/XMI/2.1"
+         xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Model xmi:id="model.capas" name="MontaniaMargaritaClasesPorCapas">
+
+    <!-- =========== Package: controller =========== -->
+    <packagedElement xmi:type="uml:Package" xmi:id="pkg.controller" name="controller">
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.AuthController" name="AuthController"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.UsuarioController" name="UsuarioController"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.MesaController" name="MesaController"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.CategoriaController" name="CategoriaController"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.ProductoController" name="ProductoController"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.PedidoController" name="PedidoController"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.FacturaController" name="FacturaController"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.ReporteController" name="ReporteController"/>
+    </packagedElement>
+
+    <!-- =========== Package: service =========== -->
+    <packagedElement xmi:type="uml:Package" xmi:id="pkg.service" name="service">
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.IAuthService" name="IAuthService"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.IUsuarioService" name="IUsuarioService"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.IMesaService" name="IMesaService"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.ICategoriaService" name="ICategoriaService"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.IProductoService" name="IProductoService"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.IPedidoService" name="IPedidoService"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.IFacturaService" name="IFacturaService"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.IReporteService" name="IReporteService"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.AuthServiceImpl" name="AuthServiceImpl"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.UsuarioServiceImpl" name="UsuarioServiceImpl"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.MesaServiceImpl" name="MesaServiceImpl"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.CategoriaServiceImpl" name="CategoriaServiceImpl"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.ProductoServiceImpl" name="ProductoServiceImpl"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.PedidoServiceImpl" name="PedidoServiceImpl"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.FacturaServiceImpl" name="FacturaServiceImpl"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.ReporteServiceImpl" name="ReporteServiceImpl"/>
+    </packagedElement>
+
+    <!-- =========== Package: repository =========== -->
+    <packagedElement xmi:type="uml:Package" xmi:id="pkg.repository" name="repository">
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.UsuarioRepo" name="UsuarioRepository"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.MesaRepo" name="MesaRepository"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.CategoriaRepo" name="CategoriaRepository"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.ProductoRepo" name="ProductoRepository"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.PedidoRepo" name="PedidoRepository"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.FacturaRepo" name="FacturaRepository"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="if.ContadorRepo" name="ContadorRepository"/>
+    </packagedElement>
+
+    <!-- =========== Package: model =========== -->
+    <packagedElement xmi:type="uml:Package" xmi:id="pkg.model" name="model">
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.cap.UsuarioEntity" name="UsuarioEntity"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.cap.MesaEntity" name="MesaEntity"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.cap.CategoriaEntity" name="CategoriaEntity"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.cap.ProductoEntity" name="ProductoEntity"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.cap.PedidoEntity" name="PedidoEntity"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.cap.ItemPedido" name="ItemPedido"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.cap.FacturaEntity" name="FacturaEntity"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.cap.Auditoria" name="Auditoria"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.cap.DatosCliente" name="DatosCliente"/>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="enum.cap.Rol" name="Rol">
+        <ownedLiteral xmi:id="lit.cap.Rol.M" name="MESERO"/>
+        <ownedLiteral xmi:id="lit.cap.Rol.A" name="ADMINISTRADOR"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="enum.cap.EstadoMesa" name="EstadoMesa">
+        <ownedLiteral xmi:id="lit.cap.EM.L" name="LIBRE"/>
+        <ownedLiteral xmi:id="lit.cap.EM.O" name="OCUPADA"/>
+        <ownedLiteral xmi:id="lit.cap.EM.C" name="CUENTA_SOLICITADA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="enum.cap.EstadoPedido" name="EstadoPedido">
+        <ownedLiteral xmi:id="lit.cap.EP.A" name="ABIERTO"/>
+        <ownedLiteral xmi:id="lit.cap.EP.E" name="EN_CURSO"/>
+        <ownedLiteral xmi:id="lit.cap.EP.C" name="CERRADO"/>
+        <ownedLiteral xmi:id="lit.cap.EP.F" name="FACTURADO"/>
+        <ownedLiteral xmi:id="lit.cap.EP.X" name="CANCELADO"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="enum.cap.MetodoPago" name="MetodoPago">
+        <ownedLiteral xmi:id="lit.cap.MP.E" name="EFECTIVO"/>
+        <ownedLiteral xmi:id="lit.cap.MP.T" name="TARJETA_TRANSFERENCIA"/>
+      </packagedElement>
+    </packagedElement>
+
+    <!-- =========== Package: dto =========== -->
+    <packagedElement xmi:type="uml:Package" xmi:id="pkg.dto" name="dto">
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.LoginRequest" name="LoginRequest"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.CrearPedidoRequest" name="CrearPedidoRequest"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.CrearFacturaRequest" name="CrearFacturaRequest"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.ModificarItem" name="ModificarItemPedidoRequest"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.CancelarPedido" name="CancelarPedidoRequest"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.CrearUsuario" name="CrearUsuarioRequest"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.ActualizarPin" name="ActualizarPinRequest"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.CrearProducto" name="CrearProductoRequest"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.CrearCategoria" name="CrearCategoriaRequest"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.AuthResponse" name="AuthResponse"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.UsuarioResponse" name="UsuarioResponse"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.MesaResponse" name="MesaResponse"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.ProductoResponse" name="ProductoResponse"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.CategoriaResponse" name="CategoriaResponse"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.PedidoResponse" name="PedidoResponse"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.FacturaResponse" name="FacturaResponse"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.ItemPedidoResponse" name="ItemPedidoResponse"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.ReporteResponse" name="ReporteVentasResponse"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cls.ErrorResponse" name="ErrorResponse"/>
+    </packagedElement>
+
+    <!-- =========== REALIZATIONS (impl ▷ interface) =========== -->
+    <packagedElement xmi:type="uml:Realization" xmi:id="rel.realize.Auth" client="cls.AuthServiceImpl" supplier="if.IAuthService"/>
+    <packagedElement xmi:type="uml:Realization" xmi:id="rel.realize.Usu" client="cls.UsuarioServiceImpl" supplier="if.IUsuarioService"/>
+    <packagedElement xmi:type="uml:Realization" xmi:id="rel.realize.Mesa" client="cls.MesaServiceImpl" supplier="if.IMesaService"/>
+    <packagedElement xmi:type="uml:Realization" xmi:id="rel.realize.Cat" client="cls.CategoriaServiceImpl" supplier="if.ICategoriaService"/>
+    <packagedElement xmi:type="uml:Realization" xmi:id="rel.realize.Prod" client="cls.ProductoServiceImpl" supplier="if.IProductoService"/>
+    <packagedElement xmi:type="uml:Realization" xmi:id="rel.realize.Ped" client="cls.PedidoServiceImpl" supplier="if.IPedidoService"/>
+    <packagedElement xmi:type="uml:Realization" xmi:id="rel.realize.Fac" client="cls.FacturaServiceImpl" supplier="if.IFacturaService"/>
+    <packagedElement xmi:type="uml:Realization" xmi:id="rel.realize.Rep" client="cls.ReporteServiceImpl" supplier="if.IReporteService"/>
+
+    <!-- =========== DEPENDENCIES (controller ⇢ service) =========== -->
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.AuthC_AuthS" client="cls.AuthController" supplier="if.IAuthService"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.UsuC_UsuS" client="cls.UsuarioController" supplier="if.IUsuarioService"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.MesaC_MesaS" client="cls.MesaController" supplier="if.IMesaService"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.CatC_CatS" client="cls.CategoriaController" supplier="if.ICategoriaService"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.ProdC_ProdS" client="cls.ProductoController" supplier="if.IProductoService"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.PedC_PedS" client="cls.PedidoController" supplier="if.IPedidoService"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.FacC_FacS" client="cls.FacturaController" supplier="if.IFacturaService"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.RepC_RepS" client="cls.ReporteController" supplier="if.IReporteService"/>
+
+    <!-- =========== DEPENDENCIES (service impl ⇢ repository) =========== -->
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.AuthS_UsuR" client="cls.AuthServiceImpl" supplier="if.UsuarioRepo"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.UsuS_UsuR" client="cls.UsuarioServiceImpl" supplier="if.UsuarioRepo"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.MesaS_MesaR" client="cls.MesaServiceImpl" supplier="if.MesaRepo"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.CatS_CatR" client="cls.CategoriaServiceImpl" supplier="if.CategoriaRepo"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.ProdS_ProdR" client="cls.ProductoServiceImpl" supplier="if.ProductoRepo"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.ProdS_CatR" client="cls.ProductoServiceImpl" supplier="if.CategoriaRepo"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.PedS_PedR" client="cls.PedidoServiceImpl" supplier="if.PedidoRepo"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.PedS_MesaR" client="cls.PedidoServiceImpl" supplier="if.MesaRepo"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.PedS_ProdR" client="cls.PedidoServiceImpl" supplier="if.ProductoRepo"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.FacS_FacR" client="cls.FacturaServiceImpl" supplier="if.FacturaRepo"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.FacS_PedR" client="cls.FacturaServiceImpl" supplier="if.PedidoRepo"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.FacS_CntR" client="cls.FacturaServiceImpl" supplier="if.ContadorRepo"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="dep.RepS_FacR" client="cls.ReporteServiceImpl" supplier="if.FacturaRepo"/>
+
+  </uml:Model>
+</xmi:XMI>

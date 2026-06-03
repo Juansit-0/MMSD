@@ -1,0 +1,276 @@
+@startuml clases
+title Diagrama de Clases — Atributos, Constructores, Getters y Setters
+
+skinparam classAttributeIconSize 0
+skinparam class {
+  BackgroundColor #E8F4FD
+  BorderColor #2C5F8D
+}
+
+' ============== ENUMS ==============
+
+enum Rol {
+  MESERO
+  ADMINISTRADOR
+}
+
+enum EstadoMesa {
+  LIBRE
+  OCUPADA
+  CUENTA_SOLICITADA
+}
+
+enum EstadoPedido {
+  ABIERTO
+  EN_CURSO
+  CERRADO
+  FACTURADO
+  CANCELADO
+}
+
+enum MetodoPago {
+  EFECTIVO
+  TARJETA_TRANSFERENCIA
+}
+
+' ============== USUARIO ==============
+
+class UsuarioEntity {
+  - id : String
+  - nombreCompleto : String
+  - usuario : String
+  - pinHash : String
+  - rol : Rol
+  - activo : boolean
+  - fechaCreacion : Instant
+  --
+  + UsuarioEntity()
+  + UsuarioEntity(nombreCompleto : String, usuario : String, pinHash : String, rol : Rol)
+  --
+  + getId() : String
+  + setId(id : String) : void
+  + getNombreCompleto() : String
+  + setNombreCompleto(nombreCompleto : String) : void
+  + getUsuario() : String
+  + setUsuario(usuario : String) : void
+  + getPinHash() : String
+  + setPinHash(pinHash : String) : void
+  + getRol() : Rol
+  + setRol(rol : Rol) : void
+  + isActivo() : boolean
+  + setActivo(activo : boolean) : void
+  + getFechaCreacion() : Instant
+  + setFechaCreacion(fechaCreacion : Instant) : void
+}
+
+' ============== MESA ==============
+
+class MesaEntity {
+  - id : String
+  - numero : int
+  - estado : EstadoMesa
+  --
+  + MesaEntity()
+  + MesaEntity(numero : int, estado : EstadoMesa)
+  --
+  + getId() : String
+  + setId(id : String) : void
+  + getNumero() : int
+  + setNumero(numero : int) : void
+  + getEstado() : EstadoMesa
+  + setEstado(estado : EstadoMesa) : void
+}
+
+' ============== PRODUCTO ==============
+
+class ProductoEntity {
+  - id : String
+  - nombre : String
+  - categoriaId : String
+  - precio : BigDecimal
+  - activo : boolean
+  - fechaCreacion : Instant
+  --
+  + ProductoEntity()
+  + ProductoEntity(nombre : String, categoriaId : String, precio : BigDecimal)
+  --
+  + getId() : String
+  + setId(id : String) : void
+  + getNombre() : String
+  + setNombre(nombre : String) : void
+  + getCategoriaId() : String
+  + setCategoriaId(categoriaId : String) : void
+  + getPrecio() : BigDecimal
+  + setPrecio(precio : BigDecimal) : void
+  + isActivo() : boolean
+  + setActivo(activo : boolean) : void
+  + getFechaCreacion() : Instant
+  + setFechaCreacion(fechaCreacion : Instant) : void
+}
+
+' ============== CATEGORIA ==============
+
+class CategoriaEntity {
+  - id : String
+  - nombre : String
+  - descripcion : String
+  - activo : boolean
+  --
+  + CategoriaEntity()
+  + CategoriaEntity(nombre : String, descripcion : String)
+  --
+  + getId() : String
+  + setId(id : String) : void
+  + getNombre() : String
+  + setNombre(nombre : String) : void
+  + getDescripcion() : String
+  + setDescripcion(descripcion : String) : void
+  + isActivo() : boolean
+  + setActivo(activo : boolean) : void
+}
+
+' ============== PEDIDO ==============
+
+class PedidoEntity {
+  - id : String
+  - mesaId : String
+  - meseroId : String
+  - estado : EstadoPedido
+  - items : List<ItemPedido>
+  - total : BigDecimal
+  - razonCancelacion : String
+  - auditoria : Auditoria
+  --
+  + PedidoEntity()
+  + PedidoEntity(mesaId : String, meseroId : String, items : List<ItemPedido>)
+  --
+  + getId() : String
+  + setId(id : String) : void
+  + getMesaId() : String
+  + setMesaId(mesaId : String) : void
+  + getMeseroId() : String
+  + setMeseroId(meseroId : String) : void
+  + getEstado() : EstadoPedido
+  + setEstado(estado : EstadoPedido) : void
+  + getItems() : List<ItemPedido>
+  + setItems(items : List<ItemPedido>) : void
+  + getTotal() : BigDecimal
+  + setTotal(total : BigDecimal) : void
+  + getRazonCancelacion() : String
+  + setRazonCancelacion(razon : String) : void
+  + getAuditoria() : Auditoria
+  + setAuditoria(auditoria : Auditoria) : void
+  + recalcularTotal() : void
+}
+
+' ============== ITEM PEDIDO ==============
+
+class ItemPedido {
+  - productoId : String
+  - nombreSnapshot : String
+  - precioSnapshot : BigDecimal
+  - cantidad : int
+  - subtotal : BigDecimal
+  --
+  + ItemPedido()
+  + ItemPedido(productoId : String, nombreSnapshot : String, precioSnapshot : BigDecimal, cantidad : int)
+  --
+  + getProductoId() : String
+  + setProductoId(productoId : String) : void
+  + getNombreSnapshot() : String
+  + setNombreSnapshot(nombreSnapshot : String) : void
+  + getPrecioSnapshot() : BigDecimal
+  + setPrecioSnapshot(precioSnapshot : BigDecimal) : void
+  + getCantidad() : int
+  + setCantidad(cantidad : int) : void
+  + getSubtotal() : BigDecimal
+  + setSubtotal(subtotal : BigDecimal) : void
+  + calcularSubtotal() : BigDecimal
+}
+
+' ============== FACTURA ==============
+
+class FacturaEntity {
+  - id : String
+  - numero : long
+  - pedidoId : String
+  - cajeroId : String
+  - items : List<ItemPedido>
+  - total : BigDecimal
+  - metodoPago : MetodoPago
+  - datosCliente : DatosCliente
+  - fechaEmision : Instant
+  --
+  + FacturaEntity()
+  + FacturaEntity(numero : long, pedidoId : String, cajeroId : String, items : List<ItemPedido>, total : BigDecimal, metodoPago : MetodoPago)
+  --
+  + getId() : String
+  + setId(id : String) : void
+  + getNumero() : long
+  + setNumero(numero : long) : void
+  + getPedidoId() : String
+  + setPedidoId(pedidoId : String) : void
+  + getCajeroId() : String
+  + setCajeroId(cajeroId : String) : void
+  + getItems() : List<ItemPedido>
+  + setItems(items : List<ItemPedido>) : void
+  + getTotal() : BigDecimal
+  + setTotal(total : BigDecimal) : void
+  + getMetodoPago() : MetodoPago
+  + setMetodoPago(metodoPago : MetodoPago) : void
+  + getDatosCliente() : DatosCliente
+  + setDatosCliente(datosCliente : DatosCliente) : void
+  + getFechaEmision() : Instant
+  + setFechaEmision(fechaEmision : Instant) : void
+}
+
+' ============== EMBEBIDOS ==============
+
+class Auditoria {
+  - creadoPor : String
+  - fechaCreacion : Instant
+  - modificadoPor : String
+  - fechaModificacion : Instant
+  --
+  + Auditoria()
+  + Auditoria(creadoPor : String, fechaCreacion : Instant)
+  --
+  + getCreadoPor() : String
+  + setCreadoPor(creadoPor : String) : void
+  + getFechaCreacion() : Instant
+  + setFechaCreacion(fechaCreacion : Instant) : void
+  + getModificadoPor() : String
+  + setModificadoPor(modificadoPor : String) : void
+  + getFechaModificacion() : Instant
+  + setFechaModificacion(fechaModificacion : Instant) : void
+}
+
+class DatosCliente {
+  - nombre : String
+  - identificacion : String
+  --
+  + DatosCliente()
+  + DatosCliente(nombre : String, identificacion : String)
+  --
+  + getNombre() : String
+  + setNombre(nombre : String) : void
+  + getIdentificacion() : String
+  + setIdentificacion(identificacion : String) : void
+}
+
+' ============== RELACIONES ==============
+
+UsuarioEntity "1" -- "1" Rol
+MesaEntity "1" -- "1" EstadoMesa
+ProductoEntity "*" -- "1" CategoriaEntity : pertenece >
+PedidoEntity "1" *-- "*" ItemPedido : contiene >
+PedidoEntity "1" -- "1" EstadoPedido
+PedidoEntity "1" o-- "1" Auditoria
+PedidoEntity "*" -- "1" MesaEntity : ocupa >
+PedidoEntity "*" -- "1" UsuarioEntity : atendido por (mesero) >
+FacturaEntity "1" o-- "*" ItemPedido : snapshot
+FacturaEntity "0..1" -- "1" PedidoEntity : factura de >
+FacturaEntity "*" -- "1" UsuarioEntity : emitida por (cajero) >
+FacturaEntity "1" -- "1" MetodoPago
+FacturaEntity "1" o-- "0..1" DatosCliente
+@enduml

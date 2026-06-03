@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1"
+         xmlns:xmi="http://schema.omg.org/spec/XMI/2.1"
+         xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Model xmi:id="model.clases" name="MontaniaMargaritaClases">
+
+    <!-- ============ ENUMS ============ -->
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="enum.Rol" name="Rol">
+      <ownedLiteral xmi:id="lit.Rol.M" name="MESERO"/>
+      <ownedLiteral xmi:id="lit.Rol.A" name="ADMINISTRADOR"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="enum.EstadoMesa" name="EstadoMesa">
+      <ownedLiteral xmi:id="lit.EM.L" name="LIBRE"/>
+      <ownedLiteral xmi:id="lit.EM.O" name="OCUPADA"/>
+      <ownedLiteral xmi:id="lit.EM.C" name="CUENTA_SOLICITADA"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="enum.EstadoPedido" name="EstadoPedido">
+      <ownedLiteral xmi:id="lit.EP.A" name="ABIERTO"/>
+      <ownedLiteral xmi:id="lit.EP.E" name="EN_CURSO"/>
+      <ownedLiteral xmi:id="lit.EP.C" name="CERRADO"/>
+      <ownedLiteral xmi:id="lit.EP.F" name="FACTURADO"/>
+      <ownedLiteral xmi:id="lit.EP.X" name="CANCELADO"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="enum.MetodoPago" name="MetodoPago">
+      <ownedLiteral xmi:id="lit.MP.E" name="EFECTIVO"/>
+      <ownedLiteral xmi:id="lit.MP.T" name="TARJETA_TRANSFERENCIA"/>
+    </packagedElement>
+
+    <!-- ============ PRIMITIVE TYPES ============ -->
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="pt.String" name="String"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="pt.int" name="int"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="pt.long" name="long"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="pt.boolean" name="boolean"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="pt.BigDecimal" name="BigDecimal"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="pt.Instant" name="Instant"/>
+
+    <!-- ============ CLASES ============ -->
+    <packagedElement xmi:type="uml:Class" xmi:id="cls.UsuarioEntity" name="UsuarioEntity">
+      <ownedAttribute xmi:id="att.U.id" name="id" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.U.nombre" name="nombreCompleto" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.U.usuario" name="usuario" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.U.pinHash" name="pinHash" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.U.rol" name="rol" visibility="private" type="enum.Rol"/>
+      <ownedAttribute xmi:id="att.U.activo" name="activo" visibility="private" type="pt.boolean"/>
+      <ownedAttribute xmi:id="att.U.fecha" name="fechaCreacion" visibility="private" type="pt.Instant"/>
+      <ownedOperation xmi:id="op.U.ctor" name="UsuarioEntity" visibility="public"/>
+      <ownedOperation xmi:id="op.U.getId" name="getId" visibility="public"/>
+      <ownedOperation xmi:id="op.U.setId" name="setId" visibility="public"/>
+      <ownedOperation xmi:id="op.U.getRol" name="getRol" visibility="public"/>
+      <ownedOperation xmi:id="op.U.isActivo" name="isActivo" visibility="public"/>
+      <ownedOperation xmi:id="op.U.toString" name="toString" visibility="public"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Class" xmi:id="cls.MesaEntity" name="MesaEntity">
+      <ownedAttribute xmi:id="att.M.id" name="id" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.M.numero" name="numero" visibility="private" type="pt.int"/>
+      <ownedAttribute xmi:id="att.M.estado" name="estado" visibility="private" type="enum.EstadoMesa"/>
+      <ownedOperation xmi:id="op.M.ctor" name="MesaEntity" visibility="public"/>
+      <ownedOperation xmi:id="op.M.getNum" name="getNumero" visibility="public"/>
+      <ownedOperation xmi:id="op.M.getEst" name="getEstado" visibility="public"/>
+      <ownedOperation xmi:id="op.M.setEst" name="setEstado" visibility="public"/>
+      <ownedOperation xmi:id="op.M.toString" name="toString" visibility="public"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Class" xmi:id="cls.CategoriaEntity" name="CategoriaEntity">
+      <ownedAttribute xmi:id="att.C.id" name="id" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.C.nombre" name="nombre" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.C.desc" name="descripcion" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.C.activo" name="activo" visibility="private" type="pt.boolean"/>
+      <ownedOperation xmi:id="op.C.ctor" name="CategoriaEntity" visibility="public"/>
+      <ownedOperation xmi:id="op.C.getN" name="getNombre" visibility="public"/>
+      <ownedOperation xmi:id="op.C.toString" name="toString" visibility="public"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Class" xmi:id="cls.ProductoEntity" name="ProductoEntity">
+      <ownedAttribute xmi:id="att.P.id" name="id" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.P.nombre" name="nombre" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.P.catId" name="categoriaId" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.P.precio" name="precio" visibility="private" type="pt.BigDecimal"/>
+      <ownedAttribute xmi:id="att.P.activo" name="activo" visibility="private" type="pt.boolean"/>
+      <ownedAttribute xmi:id="att.P.fecha" name="fechaCreacion" visibility="private" type="pt.Instant"/>
+      <ownedOperation xmi:id="op.P.ctor" name="ProductoEntity" visibility="public"/>
+      <ownedOperation xmi:id="op.P.getPre" name="getPrecio" visibility="public"/>
+      <ownedOperation xmi:id="op.P.isAct" name="isActivo" visibility="public"/>
+      <ownedOperation xmi:id="op.P.toString" name="toString" visibility="public"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Class" xmi:id="cls.ItemPedido" name="ItemPedido">
+      <ownedAttribute xmi:id="att.IP.prod" name="productoId" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.IP.nom" name="nombreSnapshot" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.IP.precio" name="precioSnapshot" visibility="private" type="pt.BigDecimal"/>
+      <ownedAttribute xmi:id="att.IP.cant" name="cantidad" visibility="private" type="pt.int"/>
+      <ownedAttribute xmi:id="att.IP.sub" name="subtotal" visibility="private" type="pt.BigDecimal"/>
+      <ownedOperation xmi:id="op.IP.ctor" name="ItemPedido" visibility="public"/>
+      <ownedOperation xmi:id="op.IP.calc" name="calcularSubtotal" visibility="public"/>
+      <ownedOperation xmi:id="op.IP.getSub" name="getSubtotal" visibility="public"/>
+      <ownedOperation xmi:id="op.IP.toString" name="toString" visibility="public"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Class" xmi:id="cls.PedidoEntity" name="PedidoEntity">
+      <ownedAttribute xmi:id="att.PED.id" name="id" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.PED.mesaId" name="mesaId" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.PED.meseroId" name="meseroId" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.PED.estado" name="estado" visibility="private" type="enum.EstadoPedido"/>
+      <ownedAttribute xmi:id="att.PED.total" name="total" visibility="private" type="pt.BigDecimal"/>
+      <ownedAttribute xmi:id="att.PED.razon" name="razonCancelacion" visibility="private" type="pt.String"/>
+      <ownedOperation xmi:id="op.PED.ctor" name="PedidoEntity" visibility="public"/>
+      <ownedOperation xmi:id="op.PED.recalc" name="recalcularTotal" visibility="public"/>
+      <ownedOperation xmi:id="op.PED.getEst" name="getEstado" visibility="public"/>
+      <ownedOperation xmi:id="op.PED.setEst" name="setEstado" visibility="public"/>
+      <ownedOperation xmi:id="op.PED.getTot" name="getTotal" visibility="public"/>
+      <ownedOperation xmi:id="op.PED.toString" name="toString" visibility="public"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Class" xmi:id="cls.FacturaEntity" name="FacturaEntity">
+      <ownedAttribute xmi:id="att.F.id" name="id" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.F.num" name="numero" visibility="private" type="pt.long"/>
+      <ownedAttribute xmi:id="att.F.pedidoId" name="pedidoId" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.F.cajeroId" name="cajeroId" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.F.total" name="total" visibility="private" type="pt.BigDecimal"/>
+      <ownedAttribute xmi:id="att.F.mp" name="metodoPago" visibility="private" type="enum.MetodoPago"/>
+      <ownedAttribute xmi:id="att.F.fecha" name="fechaEmision" visibility="private" type="pt.Instant"/>
+      <ownedOperation xmi:id="op.F.ctor" name="FacturaEntity" visibility="public"/>
+      <ownedOperation xmi:id="op.F.getNum" name="getNumero" visibility="public"/>
+      <ownedOperation xmi:id="op.F.getTot" name="getTotal" visibility="public"/>
+      <ownedOperation xmi:id="op.F.getMP" name="getMetodoPago" visibility="public"/>
+      <ownedOperation xmi:id="op.F.toString" name="toString" visibility="public"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Class" xmi:id="cls.Auditoria" name="Auditoria">
+      <ownedAttribute xmi:id="att.A.creado" name="creadoPor" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.A.fc" name="fechaCreacion" visibility="private" type="pt.Instant"/>
+      <ownedAttribute xmi:id="att.A.mod" name="modificadoPor" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.A.fm" name="fechaModificacion" visibility="private" type="pt.Instant"/>
+      <ownedOperation xmi:id="op.A.ctor" name="Auditoria" visibility="public"/>
+      <ownedOperation xmi:id="op.A.toString" name="toString" visibility="public"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Class" xmi:id="cls.DatosCliente" name="DatosCliente">
+      <ownedAttribute xmi:id="att.DC.nombre" name="nombre" visibility="private" type="pt.String"/>
+      <ownedAttribute xmi:id="att.DC.id" name="identificacion" visibility="private" type="pt.String"/>
+      <ownedOperation xmi:id="op.DC.ctor" name="DatosCliente" visibility="public"/>
+      <ownedOperation xmi:id="op.DC.toString" name="toString" visibility="public"/>
+    </packagedElement>
+
+    <!-- ============ ASSOCIATIONS ============ -->
+
+    <packagedElement xmi:type="uml:Association" xmi:id="rel.U_Rol" name="tiene_rol" memberEnd="end.U_Rol.a end.U_Rol.b">
+      <ownedEnd xmi:id="end.U_Rol.a" type="cls.UsuarioEntity" aggregation="none"/>
+      <ownedEnd xmi:id="end.U_Rol.b" type="enum.Rol" aggregation="none"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Association" xmi:id="rel.M_EM" name="estado_mesa" memberEnd="end.M_EM.a end.M_EM.b">
+      <ownedEnd xmi:id="end.M_EM.a" type="cls.MesaEntity" aggregation="none"/>
+      <ownedEnd xmi:id="end.M_EM.b" type="enum.EstadoMesa" aggregation="none"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Association" xmi:id="rel.P_C" name="pertenece" memberEnd="end.P_C.a end.P_C.b">
+      <ownedEnd xmi:id="end.P_C.a" type="cls.ProductoEntity" aggregation="none"/>
+      <ownedEnd xmi:id="end.P_C.b" type="cls.CategoriaEntity" aggregation="none"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Association" xmi:id="rel.PED_IP" name="contiene" memberEnd="end.PED_IP.a end.PED_IP.b">
+      <ownedEnd xmi:id="end.PED_IP.a" type="cls.PedidoEntity" aggregation="composite"/>
+      <ownedEnd xmi:id="end.PED_IP.b" type="cls.ItemPedido" aggregation="none"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Association" xmi:id="rel.PED_EP" name="estado_pedido" memberEnd="end.PED_EP.a end.PED_EP.b">
+      <ownedEnd xmi:id="end.PED_EP.a" type="cls.PedidoEntity" aggregation="none"/>
+      <ownedEnd xmi:id="end.PED_EP.b" type="enum.EstadoPedido" aggregation="none"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Association" xmi:id="rel.PED_A" name="audita" memberEnd="end.PED_A.a end.PED_A.b">
+      <ownedEnd xmi:id="end.PED_A.a" type="cls.PedidoEntity" aggregation="shared"/>
+      <ownedEnd xmi:id="end.PED_A.b" type="cls.Auditoria" aggregation="none"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Association" xmi:id="rel.PED_M" name="ocupa" memberEnd="end.PED_M.a end.PED_M.b">
+      <ownedEnd xmi:id="end.PED_M.a" type="cls.PedidoEntity" aggregation="none"/>
+      <ownedEnd xmi:id="end.PED_M.b" type="cls.MesaEntity" aggregation="none"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Association" xmi:id="rel.PED_U" name="atendido_por" memberEnd="end.PED_U.a end.PED_U.b">
+      <ownedEnd xmi:id="end.PED_U.a" type="cls.PedidoEntity" aggregation="none"/>
+      <ownedEnd xmi:id="end.PED_U.b" type="cls.UsuarioEntity" aggregation="none"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Association" xmi:id="rel.F_IP" name="snapshot_items" memberEnd="end.F_IP.a end.F_IP.b">
+      <ownedEnd xmi:id="end.F_IP.a" type="cls.FacturaEntity" aggregation="shared"/>
+      <ownedEnd xmi:id="end.F_IP.b" type="cls.ItemPedido" aggregation="none"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Association" xmi:id="rel.F_PED" name="factura_de" memberEnd="end.F_PED.a end.F_PED.b">
+      <ownedEnd xmi:id="end.F_PED.a" type="cls.FacturaEntity" aggregation="none"/>
+      <ownedEnd xmi:id="end.F_PED.b" type="cls.PedidoEntity" aggregation="none"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Association" xmi:id="rel.F_U" name="emitida_por" memberEnd="end.F_U.a end.F_U.b">
+      <ownedEnd xmi:id="end.F_U.a" type="cls.FacturaEntity" aggregation="none"/>
+      <ownedEnd xmi:id="end.F_U.b" type="cls.UsuarioEntity" aggregation="none"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Association" xmi:id="rel.F_MP" name="metodo" memberEnd="end.F_MP.a end.F_MP.b">
+      <ownedEnd xmi:id="end.F_MP.a" type="cls.FacturaEntity" aggregation="none"/>
+      <ownedEnd xmi:id="end.F_MP.b" type="enum.MetodoPago" aggregation="none"/>
+    </packagedElement>
+
+    <packagedElement xmi:type="uml:Association" xmi:id="rel.F_DC" name="datos_cliente" memberEnd="end.F_DC.a end.F_DC.b">
+      <ownedEnd xmi:id="end.F_DC.a" type="cls.FacturaEntity" aggregation="shared"/>
+      <ownedEnd xmi:id="end.F_DC.b" type="cls.DatosCliente" aggregation="none"/>
+    </packagedElement>
+
+  </uml:Model>
+</xmi:XMI>

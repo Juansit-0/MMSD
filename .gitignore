@@ -1,0 +1,37 @@
+# Archivos Markdown — gestionados via GitHub Wiki, no en el repo principal
+*.md
+
+# Wiki como repositorio separado
+wiki/
+
+# Plans Claude
+.claude/plans/
+.claude/*.json
+
+# Maven / Java
+target/
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+
+# Logs
+*.log
+logs/
+
+# Datos locales y secretos
+.env
+app/data/
+app/backups/
+data/
+backups/

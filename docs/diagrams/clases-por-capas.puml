@@ -1,0 +1,217 @@
+@startuml clases-por-capas
+title Diagrama de Clases por Capas (Vista de Desarrollo)
+
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam package {
+  BackgroundColor<<controller>> #FFE6CC
+  BorderColor<<controller>> #D79B00
+  BackgroundColor<<service>>   #D5E8D4
+  BorderColor<<service>>       #82B366
+  BackgroundColor<<repository>> #DAE8FC
+  BorderColor<<repository>>     #6C8EBF
+  BackgroundColor<<model>>     #F8CECC
+  BorderColor<<model>>         #B85450
+  BackgroundColor<<dto>>       #E1D5E7
+  BorderColor<<dto>>           #9673A6
+}
+
+' ============== CAPA CONTROLLER ==============
+
+package "controller" <<controller>> {
+  class AuthController {
+    - authService : IAuthService
+    + login(req : LoginRequest) : ResponseEntity<AuthResponse>
+    + me(user : UserDetails) : ResponseEntity<UsuarioResponse>
+  }
+  class PedidoController {
+    - pedidoService : IPedidoService
+    + crear(req : CrearPedidoRequest, user : UserDetails) : ResponseEntity<PedidoResponse>
+    + modificarItems(id : String, req : ModificarItemPedidoRequest) : ResponseEntity<PedidoResponse>
+    + cerrar(id : String) : ResponseEntity<PedidoResponse>
+    + cancelar(id : String, req : CancelarPedidoRequest) : ResponseEntity<PedidoResponse>
+    + listar() : ResponseEntity<List<PedidoResponse>>
+  }
+  class FacturaController {
+    - facturaService : IFacturaService
+    + generar(req : CrearFacturaRequest, user : UserDetails) : ResponseEntity<FacturaResponse>
+    + listar() : ResponseEntity<List<FacturaResponse>>
+  }
+  class ReporteController {
+    - reporteService : IReporteService
+    + ventas(desde : LocalDate, hasta : LocalDate) : ResponseEntity<ReporteVentasResponse>
+  }
+  class UsuarioController {
+    - usuarioService : IUsuarioService
+    + crear(req : CrearUsuarioRequest) : ResponseEntity<UsuarioResponse>
+    + listar() : ResponseEntity<List<UsuarioResponse>>
+    + resetPin(id : String, req : ActualizarPinRequest) : ResponseEntity<Void>
+  }
+  class MesaController {
+    - mesaService : IMesaService
+    + listar() : ResponseEntity<List<MesaResponse>>
+  }
+  class ProductoController {
+    - productoService : IProductoService
+    + listar() : ResponseEntity<List<ProductoResponse>>
+    + crear(req : CrearProductoRequest) : ResponseEntity<ProductoResponse>
+  }
+  class CategoriaController {
+    - categoriaService : ICategoriaService
+    + listar() : ResponseEntity<List<CategoriaResponse>>
+    + crear(req : CrearCategoriaRequest) : ResponseEntity<CategoriaResponse>
+  }
+}
+
+' ============== CAPA SERVICE ==============
+
+package "service" <<service>> {
+  interface IAuthService
+  interface IPedidoService
+  interface IFacturaService
+  interface IReporteService
+  interface IUsuarioService
+  interface IMesaService
+  interface IProductoService
+  interface ICategoriaService
+
+  class AuthServiceImpl
+  class PedidoServiceImpl
+  class FacturaServiceImpl
+  class ReporteServiceImpl
+  class UsuarioServiceImpl
+  class MesaServiceImpl
+  class ProductoServiceImpl
+  class CategoriaServiceImpl
+
+  IAuthService <|.. AuthServiceImpl
+  IPedidoService <|.. PedidoServiceImpl
+  IFacturaService <|.. FacturaServiceImpl
+  IReporteService <|.. ReporteServiceImpl
+  IUsuarioService <|.. UsuarioServiceImpl
+  IMesaService <|.. MesaServiceImpl
+  IProductoService <|.. ProductoServiceImpl
+  ICategoriaService <|.. CategoriaServiceImpl
+}
+
+' ============== CAPA REPOSITORY ==============
+
+package "repository" <<repository>> {
+  interface UsuarioRepository {
+    + findByUsuario(usuario : String) : Optional<UsuarioEntity>
+    + findById(id : String) : Optional<UsuarioEntity>
+    + save(entity : UsuarioEntity) : UsuarioEntity
+  }
+  interface MesaRepository {
+    + findById(id : String) : Optional<MesaEntity>
+    + findAll() : List<MesaEntity>
+    + save(entity : MesaEntity) : MesaEntity
+  }
+  interface ProductoRepository {
+    + findByCategoriaIdAndActivo(categoriaId : String, activo : boolean) : List<ProductoEntity>
+    + findAllById(ids : Iterable<String>) : List<ProductoEntity>
+    + save(entity : ProductoEntity) : ProductoEntity
+  }
+  interface CategoriaRepository {
+    + findAll() : List<CategoriaEntity>
+    + save(entity : CategoriaEntity) : CategoriaEntity
+  }
+  interface PedidoRepository {
+    + findByMesaIdAndEstadoIn(mesaId : String, estados : Collection<EstadoPedido>) : Optional<PedidoEntity>
+    + findByMeseroId(meseroId : String) : List<PedidoEntity>
+    + save(entity : PedidoEntity) : PedidoEntity
+  }
+  interface FacturaRepository {
+    + findByPedidoId(pedidoId : String) : Optional<FacturaEntity>
+    + findByFechaEmisionBetween(desde : Instant, hasta : Instant) : List<FacturaEntity>
+    + save(entity : FacturaEntity) : FacturaEntity
+  }
+  interface ContadorRepository {
+    + siguienteFactura() : long
+  }
+}
+
+' ============== CAPA MODEL (DOMAIN) ==============
+
+package "model" <<model>> {
+  class UsuarioEntity
+  class MesaEntity
+  class ProductoEntity
+  class CategoriaEntity
+  class PedidoEntity
+  class FacturaEntity
+  class ItemPedido
+  class Auditoria
+  class DatosCliente
+  enum Rol
+  enum EstadoMesa
+  enum EstadoPedido
+  enum MetodoPago
+}
+
+' ============== CAPA DTO ==============
+
+package "dto" <<dto>> {
+  package "request" <<dto>> {
+    class LoginRequest <<record>>
+    class CrearPedidoRequest <<record>>
+    class ModificarItemPedidoRequest <<record>>
+    class CancelarPedidoRequest <<record>>
+    class CrearFacturaRequest <<record>>
+    class CrearUsuarioRequest <<record>>
+    class ActualizarPinRequest <<record>>
+  }
+  package "response" <<dto>> {
+    class AuthResponse <<record>>
+    class PedidoResponse <<record>>
+    class ItemPedidoResponse <<record>>
+    class FacturaResponse <<record>>
+    class ReporteVentasResponse <<record>>
+    class ProductoMasVendidoResponse <<record>>
+    class UsuarioResponse <<record>>
+    class ErrorResponse <<record>>
+  }
+}
+
+' ============== DEPENDENCIAS ENTRE CAPAS ==============
+
+AuthController ..> IAuthService
+PedidoController ..> IPedidoService
+FacturaController ..> IFacturaService
+ReporteController ..> IReporteService
+UsuarioController ..> IUsuarioService
+MesaController ..> IMesaService
+ProductoController ..> IProductoService
+CategoriaController ..> ICategoriaService
+
+AuthController ..> LoginRequest
+AuthController ..> AuthResponse
+PedidoController ..> CrearPedidoRequest
+PedidoController ..> PedidoResponse
+FacturaController ..> CrearFacturaRequest
+FacturaController ..> FacturaResponse
+ReporteController ..> ReporteVentasResponse
+
+AuthServiceImpl ..> UsuarioRepository
+PedidoServiceImpl ..> PedidoRepository
+PedidoServiceImpl ..> MesaRepository
+PedidoServiceImpl ..> ProductoRepository
+FacturaServiceImpl ..> FacturaRepository
+FacturaServiceImpl ..> PedidoRepository
+FacturaServiceImpl ..> ContadorRepository
+ReporteServiceImpl ..> FacturaRepository
+UsuarioServiceImpl ..> UsuarioRepository
+MesaServiceImpl ..> MesaRepository
+ProductoServiceImpl ..> ProductoRepository
+ProductoServiceImpl ..> CategoriaRepository
+CategoriaServiceImpl ..> CategoriaRepository
+
+UsuarioRepository ..> UsuarioEntity
+MesaRepository ..> MesaEntity
+ProductoRepository ..> ProductoEntity
+PedidoRepository ..> PedidoEntity
+FacturaRepository ..> FacturaEntity
+
+PedidoServiceImpl ..> PedidoEntity
+FacturaServiceImpl ..> FacturaEntity
+@enduml
