@@ -22,3 +22,6 @@ logs/
 .env
 data/
 backups/
+
+# Config local con credenciales (URI de MongoDB Atlas)
+src/main/resources/application.properties

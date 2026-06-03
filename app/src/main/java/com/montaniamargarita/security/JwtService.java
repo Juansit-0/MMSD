@@ -24,7 +24,13 @@ public class JwtService {
     private final long expiracionSegundos;
     private final String issuer;
 
-    public JwtService(
+    /**
+	 * 
+	 * @param secreto
+	 * @param expiracionSegundos
+	 * @param issuer
+	 */
+	public JwtService(
             @Value("${app.jwt.secret}") String secreto,
             @Value("${app.jwt.expiracion-segundos}") long expiracionSegundos,
             @Value("${app.jwt.issuer}") String issuer) {

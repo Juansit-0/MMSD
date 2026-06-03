@@ -27,7 +27,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/facturas")
 @PreAuthorize("hasRole('ADMINISTRADOR')")
-@Tag(name = "Facturas", description = "Generación y consulta de facturas")
+@Tag(name="Facturas", description="Generación y consulta de facturas")
 public class FacturaController {
 
     private final IFacturaService facturaService;

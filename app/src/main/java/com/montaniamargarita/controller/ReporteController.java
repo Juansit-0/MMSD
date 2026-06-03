@@ -20,7 +20,7 @@ import java.time.LocalDate;
 @RestController
 @RequestMapping("/api/v1/reportes")
 @PreAuthorize("hasRole('ADMINISTRADOR')")
-@Tag(name = "Reportes", description = "Consolidado de ventas")
+@Tag(name="Reportes", description="Consolidado de ventas")
 public class ReporteController {
 
     private final IReporteService reporteService;
@@ -29,8 +29,13 @@ public class ReporteController {
         this.reporteService = reporteService;
     }
 
-    @Operation(summary = "Reporte de ventas en un rango de fechas (formato yyyy-MM-dd)")
-    @GetMapping("/ventas")
+    /**
+	 * 
+	 * @param desde
+	 * @param hasta
+	 */
+	@Operation(summary="Reporte de ventas en un rango de fechas (formato yyyy-MM-dd)")
+	@GetMapping("/ventas")
     public ResponseEntity<ReporteVentasResponse> ventas(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate desde,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate hasta) {

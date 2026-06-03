@@ -32,7 +32,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/v1/pedidos")
-@Tag(name = "Pedidos", description = "Gestión de pedidos por mesa")
+@Tag(name="Pedidos", description="Gestión de pedidos por mesa")
 public class PedidoController {
 
     private final IPedidoService pedidoService;
@@ -43,9 +43,14 @@ public class PedidoController {
         this.pedidoMapper = pedidoMapper;
     }
 
-    @Operation(summary = "Crear un pedido en una mesa libre")
-    @PostMapping
-    @PreAuthorize("hasAnyRole('MESERO','ADMINISTRADOR')")
+    /**
+	 * 
+	 * @param request
+	 * @param authentication
+	 */
+	@Operation(summary="Crear un pedido en una mesa libre")
+	@PostMapping
+	@PreAuthorize("hasAnyRole('MESERO','ADMINISTRADOR')")
     public ResponseEntity<PedidoResponse> crear(@Valid @RequestBody CrearPedidoRequest request,
                                                 Authentication authentication) {
         String meseroId = (String) authentication.getPrincipal();
@@ -53,9 +58,14 @@ public class PedidoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(pedidoMapper.toResponse(creado));
     }
 
-    @Operation(summary = "Agregar o eliminar items de un pedido activo")
-    @PatchMapping("/{id}/items")
-    @PreAuthorize("hasAnyRole('MESERO','ADMINISTRADOR')")
+    /**
+	 * 
+	 * @param id
+	 * @param request
+	 */
+	@Operation(summary="Agregar o eliminar items de un pedido activo")
+	@PatchMapping("/{id}/items")
+	@PreAuthorize("hasAnyRole('MESERO','ADMINISTRADOR')")
     public ResponseEntity<PedidoResponse> modificarItems(
             @PathVariable String id,
             @Valid @RequestBody ModificarItemPedidoRequest request) {
@@ -63,17 +73,27 @@ public class PedidoController {
         return ResponseEntity.ok(pedidoMapper.toResponse(modificado));
     }
 
-    @Operation(summary = "Cerrar un pedido (cliente solicitó la cuenta)")
-    @PostMapping("/{id}/cerrar")
-    @PreAuthorize("hasAnyRole('MESERO','ADMINISTRADOR')")
+    /**
+	 * 
+	 * @param id
+	 */
+	@Operation(summary="Cerrar un pedido (cliente solicitó la cuenta)")
+	@PostMapping("/{id}/cerrar")
+	@PreAuthorize("hasAnyRole('MESERO','ADMINISTRADOR')")
     public ResponseEntity<PedidoResponse> cerrar(@PathVariable String id) {
         PedidoEntity cerrado = pedidoService.cerrar(id);
         return ResponseEntity.ok(pedidoMapper.toResponse(cerrado));
     }
 
-    @Operation(summary = "Cancelar un pedido (solo administrador)")
-    @PostMapping("/{id}/cancelar")
-    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    /**
+	 * 
+	 * @param id
+	 * @param request
+	 * @param authentication
+	 */
+	@Operation(summary="Cancelar un pedido (solo administrador)")
+	@PostMapping("/{id}/cancelar")
+	@PreAuthorize("hasRole('ADMINISTRADOR')")
     public ResponseEntity<PedidoResponse> cancelar(
             @PathVariable String id,
             @Valid @RequestBody CancelarPedidoRequest request,

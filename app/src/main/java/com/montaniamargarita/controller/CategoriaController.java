@@ -25,7 +25,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/v1/categorias")
-@Tag(name = "Categorías", description = "Catálogo de categorías de productos")
+@Tag(name="Categorías", description="Catálogo de categorías de productos")
 public class CategoriaController {
 
     private final ICategoriaService categoriaService;
@@ -48,9 +48,13 @@ public class CategoriaController {
         return ResponseEntity.ok(respuesta);
     }
 
-    @Operation(summary = "Crear una nueva categoría")
-    @PostMapping
-    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    /**
+	 * 
+	 * @param request
+	 */
+	@Operation(summary="Crear una nueva categoría")
+	@PostMapping
+	@PreAuthorize("hasRole('ADMINISTRADOR')")
     public ResponseEntity<CategoriaResponse> crear(@Valid @RequestBody CrearCategoriaRequest request) {
         CategoriaEntity creada = categoriaService.crear(request);
         CategoriaResponse respuesta = new CategoriaResponse(

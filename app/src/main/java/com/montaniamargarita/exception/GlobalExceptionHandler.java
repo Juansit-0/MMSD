@@ -2,6 +2,9 @@ package com.montaniamargarita.exception;
 
 import com.montaniamargarita.dto.response.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
@@ -21,7 +24,13 @@ import java.util.List;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    /** Excepciones de dominio: usan su propio code y HttpStatus. */
+    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
+    /**
+	 * Excepciones de dominio: usan su propio code y HttpStatus.
+	 * @param ex
+	 * @param req
+	 */
     @ExceptionHandler(DomainException.class)
     public ResponseEntity<ErrorResponse> manejarDomain(DomainException ex, HttpServletRequest req) {
         ErrorResponse cuerpo = new ErrorResponse(
@@ -34,7 +43,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(ex.getStatus()).body(cuerpo);
     }
 
-    /** Errores de validación de DTOs (Bean Validation). */
+    /**
+	 * Errores de validación de DTOs (Bean Validation).
+	 * @param ex
+	 * @param req
+	 */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> manejarValidacion(MethodArgumentNotValidException ex,
                                                            HttpServletRequest req) {
@@ -52,7 +65,29 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(cuerpo);
     }
 
-    /** Falta de permisos (rol insuficiente). */
+    /**
+	 * Violación de índice único en MongoDB (valor duplicado).
+	 * Se traduce a 409 Conflict en vez de 500.
+	 * @param ex
+	 * @param req
+	 */
+    @ExceptionHandler(DuplicateKeyException.class)
+    public ResponseEntity<ErrorResponse> manejarDuplicado(DuplicateKeyException ex, HttpServletRequest req) {
+        ErrorResponse cuerpo = new ErrorResponse(
+                Instant.now(),
+                HttpStatus.CONFLICT.value(),
+                "RECURSO_DUPLICADO",
+                "Ya existe un registro con un valor único duplicado",
+                req.getRequestURI(),
+                List.of());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(cuerpo);
+    }
+
+    /**
+	 * Falta de permisos (rol insuficiente).
+	 * @param ex
+	 * @param req
+	 */
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<ErrorResponse> manejarAcceso(AccessDeniedException ex, HttpServletRequest req) {
         ErrorResponse cuerpo = new ErrorResponse(
@@ -65,7 +100,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(cuerpo);
     }
 
-    /** Falta de autenticación. */
+    /**
+	 * Falta de autenticación.
+	 * @param ex
+	 * @param req
+	 */
     @ExceptionHandler(AuthenticationException.class)
     public ResponseEntity<ErrorResponse> manejarAutenticacion(AuthenticationException ex,
                                                               HttpServletRequest req) {
@@ -79,9 +118,14 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(cuerpo);
     }
 
-    /** Catch-all para errores no controlados. */
+    /**
+	 * Catch-all para errores no controlados.
+	 * @param ex
+	 * @param req
+	 */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> manejarGenerico(Exception ex, HttpServletRequest req) {
+        log.error("Error no controlado en {} {}", req.getMethod(), req.getRequestURI(), ex);
         ErrorResponse cuerpo = new ErrorResponse(
                 Instant.now(),
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),

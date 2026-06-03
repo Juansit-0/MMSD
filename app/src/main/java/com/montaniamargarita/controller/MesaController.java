@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/v1/mesas")
-@Tag(name = "Mesas", description = "Consulta de mesas del restaurante")
+@Tag(name="Mesas", description="Consulta de mesas del restaurante")
 public class MesaController {
 
     private final IMesaService mesaService;

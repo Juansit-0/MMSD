@@ -25,7 +25,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/v1/productos")
-@Tag(name = "Productos", description = "Catálogo de productos vendibles")
+@Tag(name="Productos", description="Catálogo de productos vendibles")
 public class ProductoController {
 
     private final IProductoService productoService;
@@ -49,9 +49,13 @@ public class ProductoController {
         return ResponseEntity.ok(respuesta);
     }
 
-    @Operation(summary = "Crear un nuevo producto")
-    @PostMapping
-    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    /**
+	 * 
+	 * @param request
+	 */
+	@Operation(summary="Crear un nuevo producto")
+	@PostMapping
+	@PreAuthorize("hasRole('ADMINISTRADOR')")
     public ResponseEntity<ProductoResponse> crear(@Valid @RequestBody CrearProductoRequest request) {
         ProductoEntity creado = productoService.crear(request);
         ProductoResponse respuesta = new ProductoResponse(

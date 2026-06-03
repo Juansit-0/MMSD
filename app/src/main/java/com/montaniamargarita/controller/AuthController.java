@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/v1/auth")
-@Tag(name = "Auth", description = "Autenticación y perfil del usuario")
+@Tag(name="Auth", description="Autenticación y perfil del usuario")
 public class AuthController {
 
     private final IAuthService authService;
@@ -38,14 +38,22 @@ public class AuthController {
         this.usuarioMapper = usuarioMapper;
     }
 
-    @Operation(summary = "Iniciar sesión con usuario y PIN. Devuelve un JWT.")
-    @PostMapping("/login")
+    /**
+	 * 
+	 * @param request
+	 */
+	@Operation(summary="Iniciar sesión con usuario y PIN. Devuelve un JWT.")
+	@PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
         return ResponseEntity.ok(authService.autenticar(request));
     }
 
-    @Operation(summary = "Devuelve los datos del usuario autenticado")
-    @GetMapping("/me")
+    /**
+	 * 
+	 * @param authentication
+	 */
+	@Operation(summary="Devuelve los datos del usuario autenticado")
+	@GetMapping("/me")
     public ResponseEntity<UsuarioResponse> me(Authentication authentication) {
         String idUsuario = (String) authentication.getPrincipal();
         UsuarioEntity usuario = usuarioService.obtenerPorId(idUsuario);

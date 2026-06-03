@@ -28,7 +28,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/usuarios")
 @PreAuthorize("hasRole('ADMINISTRADOR')")
-@Tag(name = "Usuarios", description = "Gestión de personal del restaurante")
+@Tag(name="Usuarios", description="Gestión de personal del restaurante")
 public class UsuarioController {
 
     private final IUsuarioService usuarioService;
@@ -56,8 +56,13 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioMapper.toResponse(creado));
     }
 
-    @Operation(summary = "Restablecer el PIN de un usuario")
-    @PostMapping("/{id}/reset-pin")
+    /**
+	 * 
+	 * @param id
+	 * @param request
+	 */
+	@Operation(summary="Restablecer el PIN de un usuario")
+	@PostMapping("/{id}/reset-pin")
     public ResponseEntity<Void> resetPin(@PathVariable String id,
                                          @Valid @RequestBody ActualizarPinRequest request) {
         usuarioService.actualizarPin(id, request.nuevoPin());
